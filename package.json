@@ -1,7 +1,7 @@
 {
-  "name": "eventsource",
-  "version": "1.0.7",
-  "description": "W3C compliant EventSource client for Node.js and browser (polyfill)",
+  "name": "launchdarkly-eventsource",
+  "version": "1.0.8",
+  "description": "Fork of eventsource package - W3C compliant EventSource client for Node.js and browser (polyfill)",
   "keywords": [
     "eventsource",
     "http",
@@ -9,14 +9,14 @@
     "sse",
     "polyfill"
   ],
-  "homepage": "http://github.com/EventSource/eventsource",
+  "homepage": "http://github.com/launchdarkly/js-eventsource",
   "author": "Aslak Hellesøy <aslak.hellesoy@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/EventSource/eventsource.git"
+    "url": "git://github.com/launchdarkly/js-eventsource.git"
   },
   "bugs": {
-    "url": "http://github.com/EventSource/eventsource/issues"
+    "url": "http://github.com/launchdarkly/js-eventsource/issues"
   },
   "directories": {
     "lib": "./lib"
@@ -26,13 +26,13 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/EventSource/eventsource/raw/master/LICENSE"
+      "url": "http://github.com/launchdarkly/js-eventsource/raw/master/LICENSE"
     }
   ],
   "devDependencies": {
     "buffer-from": "^1.1.1",
     "express": "^4.15.3",
-    "mocha": "^3.5.3",
+    "mocha": "5.2.0",
     "nyc": "^11.2.1",
     "serve-static": "^1.12.3",
     "ssestream": "^1.0.0",
@@ -40,7 +40,7 @@
     "webpack": "^3.5.6"
   },
   "scripts": {
-    "test": "mocha --reporter spec && standard",
+    "test": "mocha --reporter spec --exit && standard",
     "polyfill": "webpack lib/eventsource-polyfill.js example/eventsource-polyfill.js",
     "postpublish": "git push && git push --tags",
     "coverage": "nyc --reporter=html --reporter=text _mocha --reporter spec"
