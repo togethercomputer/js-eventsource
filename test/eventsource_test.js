@@ -1268,3 +1268,9 @@ describe('Proxying', function () {
     })
   })
 })
+
+describe('EventSource object', function () {
+  it('declares support for setting method', function () {
+    assert.equal(true, EventSource.supportsSettingMethod)
+  })
+})
