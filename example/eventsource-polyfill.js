@@ -6382,7 +6382,7 @@ function EventSource (url, eventSourceInitDict) {
     var options = parse(url)
     var isSecure = options.protocol === 'https:'
     if (eventSourceInitDict && eventSourceInitDict.skipDefaultHeaders) {
-      options.headers = {};
+      options.headers = {}
     } else {
       options.headers = { 'Cache-Control': 'no-cache', 'Accept': 'text/event-stream' }
     }
@@ -6653,10 +6653,16 @@ EventSource.prototype.OPEN = 1
 EventSource.prototype.CLOSED = 2
 
 /**
- * Identifies this EventSource polyfill as supporting setting the
- * method used for connecting to the SSE stream.
+ * Adds the EventSource.supportedOptions property that allows application code to know which
+ * custom options are supported by this polyfill.
  */
-Object.defineProperty(EventSource, 'supportsSettingMethod', {enumerable: true, value: true})
+var supportedOptions = [ 'headers', 'https', 'method', 'proxy', 'skipDefaultHeaders', 'withCredentials' ]
+var supportedOptionsObject = {}
+for (var i in supportedOptions) {
+  Object.defineProperty(supportedOptionsObject, supportedOptions[i], {enumerable: true, value: true})
+  // Using custom properties for this allows us to make them read-only.
+}
+Object.defineProperty(EventSource, 'supportedOptions', {enumerable: true, value: supportedOptionsObject})
 
 /**
  * Closes the connection, if one is made, and sets the readyState attribute to 2 (closed)
