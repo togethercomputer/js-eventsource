@@ -1,6 +1,12 @@
 # Change log
 
 All notable changes to this package will be documented in this file.
+
+## [1.2.0] - 2020-04-03
+### Added:
+- New configuration options: `errorFilter` (determines how errors should be handled), `initialRetryDelayMillis` (delay interval for connection retries), `jitterRatio` (enables delay jitter), `maxBackoffMillis` (enables exponential backoff), `retryResetIntervalMillis` (enables reset of backoff).
+- New event types: `end` (the server has closed the connection), `retrying` (provides information about upcoming connection retries).
+- See `README.md` for more about these features.
 This project adheres to [Semantic Versioning](http://semver.org).
 
 ## [1.1.0] - 2019-07- 09
