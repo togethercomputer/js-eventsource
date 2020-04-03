@@ -42,7 +42,6 @@
   "scripts": {
     "test": "mocha --reporter spec --exit && standard",
     "polyfill": "webpack lib/eventsource-polyfill.js example/eventsource-polyfill.js",
-    "postpublish": "git push && git push --tags",
     "coverage": "nyc --reporter=html --reporter=text _mocha --reporter spec"
   },
   "engines": {
