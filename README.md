@@ -2,8 +2,8 @@
 
 This library is a pure JavaScript implementation of the [EventSource](https://html.spec.whatwg.org/multipage/server-sent-events.html#server-sent-events) client. The API aims to be W3C compatible.
 
-You can use it with Node.js or as a browser polyfill for
-[browsers that don't have native `EventSource` support](http://caniuse.com/#feat=eventsource).
+You can use it with Node.js, or as a browser polyfill for
+[browsers that don't have native `EventSource` support](http://caniuse.com/#feat=eventsource). However, the current implementation is inefficient in a browser due to the use of Node API shims, and is not recommended for use as a polyfill; a future release will improve this.
 
 This is a fork of the original [EventSource](https://github.com/EventSource/eventsource) project by Aslak Hellesøy, with additions to support the requirements of the LaunchDarkly SDKs. Note that as described in the [changelog](CHANGELOG.md), the API is _not_ backward-compatible with the original package, although it can be used with minimal changes.
 
