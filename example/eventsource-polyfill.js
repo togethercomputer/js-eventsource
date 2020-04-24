@@ -6548,6 +6548,11 @@ function EventSource (url, eventSourceInitDict) {
       options.port = proxy.port
     }
 
+    // When running in Node, proxies can also be specified as an agent
+    if (config.agent) {
+      options.agent = config.agent
+    }
+
     // If https options are specified, merge them into the request options
     if (config.https) {
       for (var optName in config.https) {

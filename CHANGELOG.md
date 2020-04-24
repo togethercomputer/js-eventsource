@@ -2,6 +2,10 @@
 
 All notable changes to this package will be documented in this file.
 
+## [1.3.0] - 2020-04-23
+### Added:
+- A Node.js `http.Agent` can be specified using the `agent` option.
+
 ## [1.2.0] - 2020-04-03
 ### Added:
 - New configuration options: `errorFilter` (determines how errors should be handled), `initialRetryDelayMillis` (delay interval for connection retries), `jitterRatio` (enables delay jitter), `maxBackoffMillis` (enables exponential backoff), `retryResetIntervalMillis` (enables reset of backoff).
