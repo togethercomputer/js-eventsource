@@ -2,6 +2,10 @@
 
 All notable changes to this package will be documented in this file.
 
+## [1.3.1] - 2020-06-29
+### Fixed:
+- Incorporated [a fix](https://github.com/EventSource/eventsource/pull/130) from the upstream repository that avoids unnecessary delays when parsing a long message that is received in multiple chunks.
+
 ## [1.3.0] - 2020-04-23
 ### Added:
 - A Node.js `http.Agent` can be specified using the `agent` option.
