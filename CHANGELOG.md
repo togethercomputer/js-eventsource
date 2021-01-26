@@ -2,6 +2,10 @@
 
 All notable changes to this package will be documented in this file.
 
+## [1.4.0] - 2021-01-25
+### Added:
+- Added `readTimeoutMillis` option for automatically dropping and restarting a connection if too much time has elapsed without receiving any data.
+
 ## [1.3.1] - 2020-06-29
 ### Fixed:
 - Incorporated [a fix](https://github.com/EventSource/eventsource/pull/130) from the upstream repository that avoids unnecessary delays when parsing a long message that is received in multiple chunks.
