@@ -2,6 +2,10 @@
 
 All notable changes to this package will be documented in this file.
 
+## [1.4.1] - 2021-05-10
+### Fixed:
+- Updated the dependency on the package `original` in order to pick up a newer version of the transitive dependency `url-parse`. Older versions of `url-parse` had a [known vulnerability](https://github.com/advisories/GHSA-9m6j-fcg5-2442). (Thanks, [m-schrepel](https://github.com/launchdarkly/js-eventsource/pull/11)!)
+
 ## [1.4.0] - 2021-01-25
 ### Added:
 - Added `readTimeoutMillis` option for automatically dropping and restarting a connection if too much time has elapsed without receiving any data.
