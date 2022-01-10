@@ -2,6 +2,14 @@
 
 All notable changes to this package will be documented in this file.
 
+## [1.4.3] - 2022-01-10
+This release fixes a number of SSE spec compliance issues which do not affect usage in the LaunchDarkly SDKs, but could be relevant in other use cases.
+
+### Fixed:
+- If an event's `id:` field contains a null character, the whole field should be ignored.
+- The parser was incorrectly ignoring lines that did not contain a colon, instead of treating them as a field with an empty value. For instance, `data` on a line by itself should be equivalent to `data:`.
+- The parser should ignore any incomplete messages at the end of a stream if the stream disconnects.
+
 ## [1.4.2] - 2022-01-04
 ### Fixed:
 - If the stream URL contained user/password basicauth fields, they were not being included in the request.

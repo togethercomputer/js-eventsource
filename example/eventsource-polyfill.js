@@ -6557,8 +6557,7 @@ function EventSource (url, eventSourceInitDict) {
   }
 
   var discardTrailingNewline = false
-  var data = ''
-  var eventName = ''
+  var data, eventName, eventId
 
   var reconnectUrl = null
   var retryDelayStrategy = new retryDelay.RetryDelayStrategy(
@@ -6707,6 +6706,10 @@ function EventSource (url, eventSourceInitDict) {
         return
       }
 
+      data = ''
+      eventName = ''
+      eventId = undefined
+      
       readyState = EventSource.OPEN
       res.on('close', function () {
         res.removeAllListeners('close')
@@ -6836,16 +6839,20 @@ function EventSource (url, eventSourceInitDict) {
     if (lineLength === 0) {
       if (data.length > 0) {
         var type = eventName || 'message'
+        if (eventId !== undefined) {
+          lastEventId = eventId
+        }
         var event = new MessageEvent(type, {
           data: data.slice(0, -1), // remove trailing newline
           lastEventId: lastEventId,
           origin: original(url)
         })
         data = ''
+        eventId = undefined
         receivedEvent(event)
       }
       eventName = void 0
-    } else if (fieldLength > 0) {
+    } else {
       var noValue = fieldLength < 0
       var step = 0
       var field = buf.slice(pos, pos + (noValue ? lineLength : fieldLength)).toString()
@@ -6867,7 +6874,9 @@ function EventSource (url, eventSourceInitDict) {
       } else if (field === 'event') {
         eventName = value
       } else if (field === 'id') {
-        lastEventId = value
+        if (!value.includes("\u0000")) {
+          eventId = value
+        }
       } else if (field === 'retry') {
         var retry = parseInt(value, 10)
         if (!Number.isNaN(retry)) {
