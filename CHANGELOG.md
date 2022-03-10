@@ -2,6 +2,10 @@
 
 All notable changes to this package will be documented in this file.
 
+## [1.4.4] - 2022-03-10
+### Fixed:
+- Removed the dependency on the [`original`](https://www.npmjs.com/package/original) package. A transitive dependency of this package was flagged in [CVE-2022-0686](https://nvd.nist.gov/vuln/detail/CVE-2022-0686).
+
 ## [1.4.3] - 2022-01-10
 This release fixes a number of SSE spec compliance issues which do not affect usage in the LaunchDarkly SDKs, but could be relevant in other use cases.
 
